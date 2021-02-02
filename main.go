@@ -17,7 +17,7 @@ import (
 )
 
 type AppConfig struct {
-	KafkaHosts []string `default:"localhost:9092"`
+	KafkaHosts []string `default:"localhost:9092" split_words:"true"`
 }
 
 func main() {
@@ -65,7 +65,7 @@ func main() {
 
 	app.Post("/", c.CreateEventController)
 
-	if err := app.Listen(":3000"); err != nil {
+	if err := app.Listen(":8000"); err != nil {
 		panic(err)
 	}
 }
